@@ -1,0 +1,1448 @@
+/* 
+
+---- 01 Typography system:
+
+----02 Font size system:
+ 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+
+-03 font weights: 
+default: 400
+500
+600
+700
+
+
+-04 line height: 
+default: 1
+1.05
+1.6
+
+
+
+---05 colors: 
+Primary:#e67e22
+
+-tints:
+#fdf2e9
+-Shades:
+-Accent:
+-Greys:
+#555
+#333
+
+
+---06 shadows
+
+
+
+
+---07 border radius
+
+
+
+
+---08 white-space 
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+
+/*  */
+:root {
+  --sub-text: #555;
+  --heading-font-color: #333;
+  --selection-background-color: #e67e22;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1;
+  font-weight: normal;
+  color: var(--sub-text);
+  font-family: "Rubik", sans-serif;
+  /* this only works when there is nothing absolutely positioned in relation with the body */
+  overflow-x: hidden;
+}
+
+html {
+  /* percentage of user's browser font-size settings. */
+  font-size: 62.5%;
+}
+
+/* ****************** */
+/* How it works */
+/* ****************** */
+.how-it-works {
+  padding: 9.6rem 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 120rem;
+  padding: 0 3.2rem;
+}
+*::selection {
+  color: #ffffff;
+  background-color: var(--selection-background-color);
+}
+
+.grid {
+  display: grid;
+  row-gap: 9.6rem;
+  column-gap: 8.6rem;
+}
+
+.grid-2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-5-cols {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* ************** */
+.hero {
+  margin: 0 auto;
+  max-width: 130rem;
+  /* adding padding to the sides helps the content more visible when the user decreases the screen size, it basically prevents the content to stick to the edges. */
+  padding: 0 3.2rem;
+  display: grid;
+  /* tow boxes, equal size */
+  grid-template-columns: repeat(2, 1fr);
+  /* vertically align the content, i didn't know that you can use the align-items in a grid container */
+  align-items: center;
+  gap: 9.6rem;
+}
+
+.hero-image {
+  /* I previously created two columns giving them equal space which is 1fr, one of them contains the image, so when we give the image 100% width, it occupies 100% of the parent element which is one of the two colums in this case*/
+  width: 100%;
+}
+
+h1 {
+  font-size: 5.2rem;
+  line-height: 1.05;
+  margin-bottom: 3.2rem;
+  animation-duration: 1s;
+  animation-name: moveInTop;
+}
+
+/*  */
+.try-for-free {
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  position: relative;
+  padding: 12px 35px;
+  border-radius: 1rem;
+  background: #e67e22;
+  text-decoration: none;
+  border: 3px solid #e67e22;
+  box-shadow: 0 0 0 #e67e228c;
+  transition: all 0.3s ease-in-out;
+}
+
+.star-1 {
+  top: 20%;
+  left: 20%;
+  width: 25px;
+  z-index: -5;
+  height: auto;
+  position: absolute;
+  filter: drop-shadow(0 0 0 #fffdef);
+  transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+}
+
+.star-2 {
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  width: 15px;
+  height: auto;
+  filter: drop-shadow(0 0 0 #fffdef);
+  z-index: -5;
+  transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-3 {
+  top: 40%;
+  left: 40%;
+  width: 5px;
+  z-index: -5;
+  height: auto;
+  position: absolute;
+  filter: drop-shadow(0 0 0 #fffdef);
+  transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-4 {
+  top: 20%;
+  left: 40%;
+  width: 8px;
+  z-index: -5;
+  height: auto;
+  position: absolute;
+  filter: drop-shadow(0 0 0 #fffdef);
+  transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-5 {
+  top: 25%;
+  left: 45%;
+  width: 15px;
+  z-index: -5;
+  height: auto;
+  position: absolute;
+  filter: drop-shadow(0 0 0 #fffdef);
+  transition: all 0.6s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-6 {
+  top: 5%;
+  left: 50%;
+  width: 5px;
+  z-index: -5;
+  height: auto;
+  position: absolute;
+  transition: all 0.8s ease;
+  filter: drop-shadow(0 0 0 #fffdef);
+}
+
+.try-for-free:hover {
+  color: #e67e22;
+  background: transparent;
+  box-shadow: 0 0 25px #e67e228c;
+}
+
+.try-for-free:hover .star-1 {
+  top: -80%;
+  left: -30%;
+  z-index: 2;
+  width: 25px;
+  height: auto;
+  position: absolute;
+  filter: drop-shadow(0 0 10px #e67e22);
+}
+
+.try-for-free:hover .star-2 {
+  top: -25%;
+  left: 10%;
+  z-index: 2;
+  width: 15px;
+  height: auto;
+  position: absolute;
+  filter: drop-shadow(0 0 10px #e67e22);
+}
+
+.try-for-free:hover .star-3 {
+  top: 55%;
+  left: 25%;
+  width: 5px;
+  z-index: 2;
+  height: auto;
+  position: absolute;
+  filter: drop-shadow(0 0 10px #e67e22);
+}
+
+.try-for-free:hover .star-4 {
+  top: 30%;
+  left: 80%;
+  width: 8px;
+  z-index: 2;
+  height: auto;
+  position: absolute;
+  filter: drop-shadow(0 0 10px #e67e22);
+}
+
+.try-for-free:hover .star-5 {
+  top: 25%;
+  left: 115%;
+  z-index: 2;
+  width: 15px;
+  height: auto;
+  position: absolute;
+  filter: drop-shadow(0 0 10px #e67e22);
+}
+
+.try-for-free:hover .star-6 {
+  top: 5%;
+  left: 60%;
+  width: 5px;
+  z-index: 2;
+  height: auto;
+  position: absolute;
+  filter: drop-shadow(0 0 10px #e67e22);
+}
+
+.fil0 {
+  fill: #e67e22;
+}
+
+a.main-nav-link:hover {
+  cursor: pointer;
+}
+
+h1,
+.heading-secondary,
+.heading-tertiary {
+  font-weight: 700;
+  letter-spacing: -0.05rem;
+  color: var(--heading-font-color);
+}
+
+.heading-secondary {
+  line-height: 1.2;
+  font-size: 4.4rem;
+  margin-bottom: 9.6rem;
+}
+
+.subheading {
+  display: block;
+  font-weight: 500;
+  color: #cf711f;
+  font-size: 1.6rem;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.075rem;
+  text-transform: uppercase;
+}
+.hero-description {
+  font-size: 2rem;
+  /* use big line-height for small text */
+  line-height: 1.6;
+  margin-bottom: 4.8rem;
+  animation-duration: 1s;
+  animation-name: moveInLeft;
+}
+
+.hero-section {
+  background-color: #fdf2e9;
+  /* don't forget internal padding for inside spacing. */
+  padding: 3.2rem 0 9.6rem 0;
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 600;
+  border-radius: 1rem;
+  transition: all 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  padding: 1.6rem 3.2rem;
+}
+
+.links {
+  gap: 1.6rem;
+  display: flex;
+}
+
+.btn-full {
+  color: #fff;
+  animation-duration: 1s;
+  animation-name: moveInLeft;
+  background-color: #e67e22;
+}
+
+.btn-outline {
+  color: var(--sub-text);
+  background-color: #fff;
+  animation: moveInRight 1s ease-in-out;
+}
+
+.btn-full:hover {
+  background-color: #cf711f;
+}
+
+.btn-outline:hover {
+  background: none;
+  /* using the (box-shadow) property to add border, by using the inset keyword, the shadow gets added to the inside of the link and not outside. */
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+.delivered-meals {
+  gap: 1.6rem;
+  display: flex;
+  margin-top: 8rem;
+  align-items: center;
+  animation: moveInBottom 1s ease-out 0.5s;
+  animation-fill-mode: backwards;
+}
+
+.delivered-images {
+  display: flex;
+}
+
+.delivered-images img {
+  height: 4.4rem;
+  border-radius: 50%;
+  margin-right: -1.2rem;
+  border: 3px solid #fdf2e9;
+}
+
+.delivered-images img:last-child {
+  /* setting the margin of the last image to zero so as the gap property works properly and the space between the paragraph and the images work just fine */
+  margin-right: 0;
+}
+.delivered-meals p {
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.delivered-meals p span {
+  color: #cf711f;
+  font-weight: 700;
+}
+
+.logo {
+  height: 2.2rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #fdf2e9;
+  justify-content: space-between;
+  /* giving the header a fixed-height because we will make the header sticky in the future, and it is easier to deal with it if it has a fixed-height. */
+  height: 9.6rem;
+  padding: 0 4.8rem;
+  position: relative;
+}
+
+.main-nav-list {
+  gap: 4.8rem;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited {
+  font-weight: 500;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+  color: var(--sub-text);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.main-nav-link:hover {
+  color: #cf711f;
+}
+
+.main-nav-link.cta-button:link,
+.main-nav-link.cta {
+  color: #fff;
+  border-radius: 1rem;
+  padding: 1.2rem 2.4rem;
+  background-color: #e67e22;
+}
+
+.cta-button:link,
+.cta-button:visited {
+  color: #fff;
+}
+
+.main-nav-link.cta:hover {
+  background-color: #cf711f;
+}
+
+/* animations  */
+
+@keyframes moveInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-9.2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-9.2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(9.2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(9.2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*  */
+
+.step-img {
+  width: 35%;
+  z-index: 2;
+}
+
+/* psuedo elements can't be used on images, to we add them inside the container of the image that we are targetting. */
+.step-img-box::before {
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  content: "";
+  z-index: -1;
+  border-radius: 50%;
+  position: absolute;
+  padding-bottom: 70%;
+  background-color: #fdf2e9;
+  transform: translate(-50%, -50%);
+}
+.step-img-box {
+  position: relative;
+}
+.step-img-box::after {
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  z-index: 1;
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  padding-bottom: 50%;
+  background-color: #fae5d3;
+  transform: translate(-50%, -50%);
+}
+
+.center {
+  justify-content: center;
+}
+
+.center,
+.start {
+  display: flex;
+  align-items: center;
+}
+
+.start {
+  justify-content: flex-start;
+}
+
+.step-number {
+  color: #dddddd;
+  font-weight: 600;
+  font-size: 8.6rem;
+  margin-bottom: 1.2rem;
+  align-self: flex-start;
+}
+
+.heading-tertiary {
+  line-height: 1.2;
+  font-size: 3.6rem;
+  margin-bottom: 3.2rem;
+}
+
+.step-description {
+  font-size: 1.8rem;
+  line-height: 1.8;
+}
+
+.text-box-center {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.featured-section {
+  padding: 4.8rem 0 3.2rem 0;
+}
+
+.logos {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logos img {
+  opacity: 0.5;
+  height: 3.2rem;
+  filter: brightness(0);
+}
+
+.featured-heading {
+  color: #888;
+  font-weight: 500;
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 2.4rem;
+  letter-spacing: 0.075rem;
+  text-transform: uppercase;
+}
+
+.meals-section {
+  padding: 9.6rem 0;
+}
+
+.meal-img {
+  width: 100%;
+}
+
+.meal-title {
+  font-weight: 600;
+  font-size: 2.4rem;
+  margin-bottom: 3.2rem;
+  color: var(--heading-font-color);
+}
+
+.meal-attributes {
+  gap: 2rem;
+  display: flex;
+  list-style-type: none;
+  flex-direction: column;
+}
+
+.meal-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: #e67e22;
+}
+
+.meal-attribute {
+  gap: 1.6rem;
+  display: flex;
+  font-size: 1.8rem;
+  align-items: flex-end;
+}
+
+strong {
+  font-weight: 500;
+}
+
+.tag {
+  font-weight: 600;
+  font-size: 1.2rem;
+  border-radius: 1rem;
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  color: var(--heading-font-color);
+}
+
+.meal-tag {
+  gap: 0.4rem;
+  display: flex;
+  margin-bottom: 1.2rem;
+}
+
+.meals {
+  /* what evern overflows the container will be gone, in this case, the rounds of the image */
+  overflow: hidden;
+  transition: all 0.4s;
+  border-radius: 1.1rem;
+  box-shadow: 0 2.4rem 4.8rem #00000013;
+}
+
+.meal-content {
+  padding: 3.2rem 4.8rem 4.8rem 4.8rem;
+}
+
+.meals:hover {
+  transform: translateY(-1.2rem);
+  box-shadow: 0 3.2rem 6.4rem #0000000f;
+}
+
+.tag-vegetarian {
+  background-color: #51cf66;
+}
+
+.tag-vegan {
+  color: var(--sub-text);
+  background-color: #94d82d;
+}
+
+.tag-paleo {
+  background-color: #ffd43b;
+}
+
+.list {
+  gap: 1.6rem;
+  display: flex;
+  list-style-type: none;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.list-icon {
+  width: 3rem;
+  height: 3rem;
+  color: #e67e22;
+}
+
+.list-items span {
+  font-size: 1.8rem;
+}
+
+.list-items {
+  gap: 1.6rem;
+  display: flex;
+  line-height: 1.2;
+  align-items: center;
+}
+
+.margin-bottom-md {
+  margin-bottom: 4.8rem !important;
+}
+
+.all-recipes {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.link:link,
+.link:visited {
+  color: #e67e22;
+  padding-bottom: 2px;
+  transition: all 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.link:hover,
+.link:active {
+  color: #cf711f;
+  /* we use the (transparent) keyword instead of making it (none) because since that border is part of the element(link) if we remove it, the element will decrease in size which makes the entire layout move, so, in order to prevent this to happen we use the (transparent) keyword */
+  border-bottom: 1px solid transparent;
+}
+
+.center-element {
+  text-align: center;
+}
+
+.testimonials-section {
+  display: grid;
+  align-items: center;
+  background-color: #fdf2e9;
+  grid-template-columns: 55fr 45fr;
+}
+
+.testimonial-container {
+  padding: 9.6rem;
+}
+
+.testimonials {
+  row-gap: 4.8rem;
+  display: grid;
+  column-gap: 8rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.testimonial-image {
+  width: 6.4rem;
+  border-radius: 50%;
+  margin-bottom: 1.2rem;
+}
+
+.testimonial-text {
+  line-height: 1.8;
+  font-size: 1.8rem;
+  margin-bottom: 1.6rem;
+}
+
+.customer-name {
+  color: #6f6f6f;
+  font-size: 1.6rem;
+}
+
+.gallery-item {
+  overflow: hidden;
+}
+
+.gallery-item img {
+  width: 100%;
+  /*use this technique in order to remove the space that separates the images. */
+  display: block;
+  transition: all 0.35s;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.15);
+  filter: brightness(0.7);
+}
+
+.gallery {
+  display: grid;
+  row-gap: 1.6rem;
+  padding: 1.6rem;
+  column-gap: 1.6rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.pricing-section {
+  padding: 9.6rem 0;
+}
+
+.list {
+  gap: 1.6rem;
+  display: flex;
+  list-style-type: none;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.list-icon {
+  width: 3rem;
+  height: 3rem;
+  color: #e67e22;
+}
+
+.list-items {
+  gap: 1.6rem;
+  display: flex;
+  align-items: center;
+}
+
+.pricing-button {
+  color: #fff;
+  font-size: 2rem;
+  animation: none;
+  font-weight: 600;
+  border-radius: 1rem;
+  display: inline-block;
+  text-decoration: none;
+  padding: 1.6rem 3.2rem;
+  background-color: #e67e22;
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 4.8rem;
+}
+
+.plan-name {
+  font-size: 2rem;
+  color: #cf711f;
+  font-weight: 600;
+  margin-bottom: 3.2rem;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+}
+
+.plan-text {
+  color: #6f6f6f;
+  line-height: 1.6;
+  font-size: 1.6rem;
+}
+
+.plan-price {
+  font-weight: 600;
+  font-size: 6.2rem;
+  margin-bottom: 1.6rem;
+  color: var(--heading-font-color);
+}
+
+.plan-price::first-letter {
+  font-weight: 500;
+  font-size: 3.6rem;
+  margin-right: 0.8rem;
+}
+
+.plan-sign-up {
+  margin-top: 4.8rem;
+  text-align: center;
+}
+
+.pricing-plan-complete {
+  padding: 4.8rem;
+  /* the (overflow) property must be used on the parent element in which a child element overflows. */
+  overflow: hidden;
+  position: relative;
+}
+
+.pricing-plan-complete::after {
+  top: 6%;
+  right: -18%;
+  font-weight: 700;
+  font-size: 1.4rem;
+  position: absolute;
+  padding: 0.8rem 8rem;
+  content: "Best value";
+  transform: rotate(45deg);
+  text-transform: uppercase;
+  background-color: #ffd43b;
+  color: var(--heading-font-color);
+}
+
+.pricing-plan {
+  width: 75%;
+  border-radius: 1.1rem;
+  background-color: #fdf2e9;
+}
+
+.first-plan {
+  padding: 4.6rem;
+  background: none;
+  justify-self: end;
+  border: 2px solid #fdf2e9;
+}
+
+.grid:not(:last-child) {
+  margin-bottom: 9.6rem;
+}
+
+.feature-icon {
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 1.6rem;
+  color: #e67e22;
+  border-radius: 50%;
+  margin-bottom: 3.2rem;
+  background-color: #fdf2e9;
+}
+
+.feature-title {
+  font-weight: 700;
+  font-size: 2.4rem;
+  margin-bottom: 1.6rem;
+  color: var(--heading-font-color);
+}
+
+.feature-text {
+  line-height: 1.8;
+  font-size: 1.8rem;
+}
+
+.plan-detail {
+  line-height: 1.6;
+  font-size: 1.6rem;
+}
+
+.cta-section {
+  padding: 4.8rem 0 12.8rem 0;
+}
+
+.cta {
+  display: grid;
+  overflow: hidden;
+  border-radius: 11px;
+  background-color: #e67e22;
+  grid-template-columns: 2fr 1fr;
+  box-shadow: 0 2.4rem 4.8rem #00000013;
+  background-image: linear-gradient(to bottom right, #e98b38, #e67e22);
+}
+
+.cta-image-box {
+  width: 100%;
+  background-image:
+    linear-gradient(
+      to bottom right,
+      rgb(233, 139, 56, 0.3),
+      rgb(230, 126, 34, 0.3)
+    ),
+    url("../img/eating.jpg");
+  /* (background-size: cover;) ensures that, what ever the dimensions of the image are, it will cover it entirely */
+  background-size: cover;
+  background-position: center;
+}
+
+.cta-text-box {
+  color: #45260a;
+  padding: 4.8rem 6.4rem 6.4rem 6.4rem;
+}
+
+.cta .heading-secondary {
+  color: #45260a;
+  margin-bottom: 3.2rem;
+}
+
+.container.cta {
+  padding: 0;
+}
+
+.cta-text {
+  line-height: 1.8;
+  font-size: 1.8rem;
+  margin-bottom: 9.6rem;
+}
+
+.cta-form {
+  display: grid;
+  row-gap: 2.4rem;
+  column-gap: 3.2rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.cta-form label {
+  /* to make it have its own line */
+  display: block;
+  font-weight: 500;
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.cta-form input,
+.cta-form select {
+  width: 100%;
+  border: none;
+  color: inherit;
+  padding: 1.2rem;
+  font-size: 1.8rem;
+  border-radius: 9px;
+  font-family: inherit;
+  background-color: #fdf2e9;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cta-form input::placeholder {
+  color: #aaa;
+}
+
+.cta-form select {
+  border: none;
+  border-radius: 9px;
+  font-family: inherit;
+}
+
+.cta-form button {
+  align-self: end;
+  padding: 1.2rem;
+  color: #fdf2e9;
+  background-color: #45260a;
+}
+
+.cta-form button:hover {
+  color: var(--sub-text);
+  background-color: #fff;
+}
+
+*:focus {
+  /* unlike the border, outline is not a part of the box-model */
+  outline: none;
+  outline-offset: 6px;
+  outline: 4px dotted #ffd43b;
+}
+
+.footer-heading {
+  font-weight: 500;
+  font-size: 1.8rem;
+  margin-bottom: 3.2rem;
+}
+
+.footer-nav {
+  gap: 2.4rem;
+  display: flex;
+  list-style-type: none;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-link:link,
+.footer-link:visited {
+  color: #767676;
+  font-size: 1.6rem;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.footer-link:hover,
+.footer-link:active {
+  color: var(--sub-text);
+}
+
+.social-links {
+  gap: 2.4rem;
+  display: flex;
+  list-style-type: none;
+}
+
+.footer-logo {
+  display: inline-block;
+  margin-bottom: 3.2rem;
+}
+
+.social-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.copyright {
+  color: #767676;
+  margin-top: auto;
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.logo-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.contacts {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  font-style: normal;
+}
+
+.address {
+  margin-bottom: 2.4rem;
+}
+
+.footer-grid {
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+}
+
+.footer {
+  padding: 12.8rem 0;
+  border-top: 1px solid #eee;
+}
+
+/* rem and em do not depend on html font-size in media-queiries! istead, 1rem = em = 16px */
+/* BELOW 1344px for(smaller desktops) */
+@media (max-width: 78.5em) {
+  .hero {
+    max-width: 120rem;
+  }
+  h1 {
+    font-size: 4.4rem;
+  }
+}
+
+@media (max-width: 81.5em) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* landscape tablet */
+@media (max-width: 76em) {
+  html {
+    font-size: 56.25%;
+  }
+
+  .heading-secondary {
+    font-size: 3.6rem;
+  }
+
+  .heading-tertiary {
+    font-size: 2.4rem;
+    align-self: flex-start;
+  }
+
+  .grid {
+    column-gap: 4.8rem;
+    row-gap: 6.4rem;
+  }
+
+  .header {
+    padding: 0 3.2rem;
+  }
+
+  .hero {
+    gap: 4.8rem;
+  }
+
+  .main-nav-list {
+    gap: 3.2rem;
+  }
+
+  .testimonial-container {
+    padding: 9.6rem 3.2rem;
+  }
+}
+
+@media (max-width: 59em) {
+  html {
+    font-size: 50%;
+  }
+
+  .hero {
+    gap: 6.4rem;
+    padding: 0 8rem;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-image {
+    width: 60%;
+  }
+  .hero-image-box,
+  .hero-text-box {
+    text-align: center;
+  }
+
+  .delivered-meals {
+    margin-top: 3.2rem;
+    justify-content: center;
+  }
+
+  .logos img {
+    height: 2.4rem;
+  }
+
+  .step-number {
+    font-size: 7.4rem;
+  }
+
+  .meal-content {
+    padding: 2.4rem 3.2rem 3.2rem 3.2rem;
+  }
+
+  .testimonials-section {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .cta {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  .cta-form {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-form button {
+    margin-top: 1.2rem;
+  }
+
+  .links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 50em) {
+  .btn-mobile-nav {
+    display: block !important;
+  }
+
+  .main-nav {
+    top: 0;
+    left: 0;
+    /* 1) hide the navigation visually */
+    opacity: 0;
+    width: 100%;
+    display: flex;
+    height: 100vh;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    background-color: #ffffffb3;
+    -webkit-backdrop-filter: blur(10px);
+    /* display: none; allows no transitions at all*/
+
+    /* 2) make it unaccesible to mouse and keyboard */
+    pointer-events: none;
+    /* 3) hide it from screen readers */
+    visibility: hidden;
+  }
+
+  .nav-open .main-nav {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    animation: moveInLeft 0.4s ease-in;
+  }
+
+  .main-nav-list {
+    gap: 4.8rem;
+    flex-direction: column;
+  }
+
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 3.2rem;
+  }
+
+  .nav-open .icon-mobile-nav[name="close-outline"] {
+    display: block;
+  }
+
+  .nav-open .icon-mobile-nav[name="menu-outline"] {
+    display: none;
+  }
+}
+
+.btn-mobile-nav {
+  width: 5rem;
+  border: none;
+  height: 5rem;
+  display: none;
+  z-index: 9999;
+  cursor: pointer;
+  background: none;
+}
+
+.icon-mobile-nav {
+  width: 4.8rem;
+  height: 4.8rem;
+  color: var(--heading-font-color);
+}
+
+.icon-mobile-nav[name="close-outline"] {
+  display: none;
+}
+
+@media (max-width: 49em) {
+  .grid-3-cols,
+  .grid-4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .diets {
+    grid-column: 1/-1;
+    justify-self: center;
+  }
+
+  .heading-secondary {
+    margin-bottom: 4.8rem;
+  }
+
+  .pricing-plan {
+    width: 100%;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .nav-col {
+    grid-row: 1;
+    grid-column: span 2;
+    margin-bottom: 3.2rem;
+  }
+
+  .logo-col,
+  .address-col {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 44em) {
+  .grid {
+    row-gap: 4.8rem;
+  }
+
+  .grid-2-cols,
+  .grid-3-cols,
+  .grid-4-cols {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .hero {
+    padding: 0 3.2rem;
+  }
+
+  .hero-section {
+    padding: 2.4rem 0 6.4rem 0;
+  }
+
+  .btn,
+  .btn:link,
+  .btn:visited {
+    padding: 2.4rem 1.6rem;
+  }
+
+  .hero-image {
+    width: 80%;
+  }
+
+  .logos img {
+    height: 1.2rem;
+  }
+
+  .step-img-box:nth-child(2) {
+    grid-row: 1;
+  }
+
+  .step-img-box:nth-child(6) {
+    grid-row: 5;
+  }
+
+  .step-img-box {
+    transform: translateY(2.4rem);
+  }
+
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+  }
+
+  .cta {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-image-box {
+    height: 32rem;
+    grid-row: 1;
+  }
+
+  .cta-text-box {
+    padding: 3, 2rem;
+  }
+}
+
+/* sticky navigation */
+.sticky {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8rem;
+  padding-top: 0;
+  position: fixed;
+  z-index: 1000000;
+  padding-bottom: 0;
+  background-color: #fffffff7;
+  box-shadow: 0 1.2rem 3.2rem #fafafae6;
+}
+
+/* spacing:
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+
+/*  font-size
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+ */
